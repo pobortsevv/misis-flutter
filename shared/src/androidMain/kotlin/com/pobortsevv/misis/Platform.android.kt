@@ -1,4 +1,4 @@
-package com.example.misis
+package com.pobortsevv.misis
 
 class AndroidPlatform : Platform {
     override val name: String = "Android ${android.os.Build.VERSION.SDK_INT}"

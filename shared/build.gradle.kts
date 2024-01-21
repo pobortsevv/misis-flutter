@@ -46,7 +46,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.misis"
+    namespace = "com.pobortsevv.misis"
     compileSdk = 34
     defaultConfig {
         minSdk = 26

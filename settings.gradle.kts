@@ -14,6 +14,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Application"
+rootProject.name = "misis-kmm"
 include(":androidApp")
 include(":shared")

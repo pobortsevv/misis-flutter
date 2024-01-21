@@ -1,4 +1,4 @@
-package com.example.misis.android
+package com.pobortsevv.misis.android
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

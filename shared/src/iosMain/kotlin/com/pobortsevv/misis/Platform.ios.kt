@@ -1,4 +1,4 @@
-package com.example.misis
+package com.pobortsevv.misis
 
 import platform.UIKit.UIDevice
 

@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace = "com.example.misis.android"
+    namespace = "com.pobortsevv.misis.android"
     compileSdk = 34
     defaultConfig {
-        applicationId = "com.example.misis.android"
+        applicationId = "com.pobortsevv.misis.android"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

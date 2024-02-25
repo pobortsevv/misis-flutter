@@ -1,16 +1,21 @@
 import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:misis/models/DTO/filial_dto.dart';
 import 'package:misis/models/DTO/group_dto.dart';
+import 'package:misis/models/DTO/room_dto.dart';
+
 import 'package:misis/models/Domain/filial.dart';
-import 'package:http/http.dart' as http;
 import 'package:misis/models/Domain/group.dart';
+import 'package:misis/models/Domain/room.dart';
+
 import 'package:misis/provider/app_url.dart';
 import 'package:misis/provider/task.dart';
 
 abstract class AppProvider {
   Future<List<Filial>> fetchFilials();
   Future<List<Group>> fetchGroups();
-  Future<void> fetchRooms();
+  Future<List<Room>> fetchRooms();
   Future<void> fetchTeachers();
 }
 
@@ -44,9 +49,17 @@ final class AppProviderImp implements AppProvider {
   }
   
   @override
-  Future<void> fetchRooms() {
-    // TODO: implement fetchRooms
-    throw UnimplementedError();
+  Future<List<Room>> fetchRooms() async {
+    final body = TaskType.rooms.getEncodedBody();
+    final response = await _makeResponse(body);
+
+    if (response.statusCode == 200) {
+      final getRooms = GetRooms.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+
+      return getRooms.asDomainModel();
+    } else {
+      throw Exception('Failed to load rooms');
+    }
   }
   
   @override

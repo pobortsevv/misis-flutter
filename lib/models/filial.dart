@@ -67,4 +67,13 @@ final class Filial {
       _ => throw const FormatException('Failed to load filial.')
     };
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'shortname': shortname,
+      'code': code
+    };
+  }
 }

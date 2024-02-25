@@ -1,3 +1,4 @@
+/// Доменная модель филиала
 final class Filial {
   final int id;
   final String name;

@@ -1,3 +1,4 @@
+/// Доменная модель аудитории
 final class Room {
   final int id;
   final String name;

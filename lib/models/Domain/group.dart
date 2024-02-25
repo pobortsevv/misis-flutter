@@ -1,3 +1,4 @@
+/// Доменная модель группы
 final class Group {
   final int id;
   final String name;

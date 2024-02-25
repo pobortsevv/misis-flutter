@@ -1,4 +1,4 @@
-import 'package:misis/models/filial.dart';
+import 'package:misis/models/Domain/filial.dart';
 import 'package:misis/models/user.dart';
 
 final class Profile {

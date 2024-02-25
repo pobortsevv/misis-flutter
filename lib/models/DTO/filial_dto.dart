@@ -1,3 +1,5 @@
+import 'package:misis/models/Domain/filial.dart';
+
 final class GetFilials {
   final Map<String, dynamic> getFilials;
 
@@ -23,7 +25,6 @@ final class GetFilials {
 
   List<Filial> asDomainModel() {
     final order = getFilials['order'];
-    // final Map<String, dynamic> filialsWithoutOrder = getFilials.remove('order');
 
     List<Filial> filials = [];
     for (var value in getFilials.values) {
@@ -40,40 +41,5 @@ final class GetFilials {
     }
 
     return orderedFilials;
-  }
-}
-
-final class Filial {
-  final int id;
-  final String name;
-  final String shortname;
-  final String code;
-
-  const Filial({
-    required this.id,
-    required this.name,
-    required this.shortname,
-    required this.code
-  });
-
-  factory Filial.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {
-        'id': int id,
-        'name': String name,
-        'shortname': String shortname,
-        'code': String code
-      } => Filial(id: id, name: name, shortname: shortname, code: code),
-      _ => throw const FormatException('Failed to load filial.')
-    };
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'shortname': shortname,
-      'code': code
-    };
   }
 }

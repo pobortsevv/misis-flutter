@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:misis/models/filial.dart';
+import 'package:misis/models/Domain/filial.dart';
 import 'package:misis/provider/provider.dart';
 
 void main() {

@@ -16,9 +16,9 @@ import 'package:misis/provider/task.dart';
 
 abstract class AppProvider {
   Future<List<Filial>> fetchFilials();
-  Future<List<Group>> fetchGroups();
-  Future<List<Room>> fetchRooms();
-  Future<List<Teacher>> fetchTeachers();
+  Future<List<Group>> fetchGroups(int filialId);
+  Future<List<Room>> fetchRooms(int filialId);
+  Future<List<Teacher>> fetchTeachers(int filialId);
 }
 
 final class AppProviderImp implements AppProvider {
@@ -37,8 +37,8 @@ final class AppProviderImp implements AppProvider {
   }
 
   @override
-  Future<List<Group>> fetchGroups() async {
-    final body = TaskType.groups.getEncodedBody();
+  Future<List<Group>> fetchGroups(int filialId) async {
+    final body = TaskType.groups.getEncodedBodyByFilial(filialId);
     final response = await _makeResponse(body);
 
     if (response.statusCode == 200) {
@@ -51,8 +51,8 @@ final class AppProviderImp implements AppProvider {
   }
   
   @override
-  Future<List<Room>> fetchRooms() async {
-    final body = TaskType.rooms.getEncodedBody();
+  Future<List<Room>> fetchRooms(int filialId) async {
+    final body = TaskType.rooms.getEncodedBodyByFilial(filialId);
     final response = await _makeResponse(body);
 
     if (response.statusCode == 200) {
@@ -65,8 +65,8 @@ final class AppProviderImp implements AppProvider {
   }
   
   @override
-  Future<List<Teacher>> fetchTeachers() async {
-    final body = TaskType.teachers.getEncodedBody();
+  Future<List<Teacher>> fetchTeachers(int filialId) async {
+    final body = TaskType.teachers.getEncodedBodyByFilial(filialId);
     final response = await _makeResponse(body);
 
     if (response.statusCode == 200) {

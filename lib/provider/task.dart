@@ -12,4 +12,8 @@ enum TaskType {
   String getEncodedBody() {
     return json.encode({ bodyParam: {} });
   }
+
+  String getEncodedBodyByFilial(int filialId) {
+    return json.encode({ bodyParam: { "filial": filialId } });
+  }
 }

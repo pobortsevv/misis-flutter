@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:misis/models/Domain/filial.dart';
+import 'package:misis/models/Domain/group.dart';
+import 'package:misis/models/Domain/room.dart';
+import 'package:misis/models/Domain/teacher.dart';
 import 'package:misis/provider/provider.dart';
 
 void main() {
@@ -15,12 +18,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   late final AppProvider provider;
-  late Future<List<Filial>> futureFilials;
+  late Future<List<Filial>> futureModels;
 
   @override
   void initState() {
     provider = AppProviderImp();
-    futureFilials = provider.fetchFilials();
+    futureModels = provider.fetchFilials();
 
     super.initState();
   }
@@ -38,7 +41,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: FutureBuilder<List<Filial>>(
-            future: futureFilials,
+            future: futureModels,
             builder: (context, snapshot) {
 
 
@@ -46,10 +49,10 @@ class _MyAppState extends State<MyApp> {
                 return ListView.builder(
                   itemCount: snapshot.data?.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final filial = snapshot.data![index];
+                    final model = snapshot.data![index];
 
                     return ListTile(
-                      title: Text(filial.name)
+                      title: Text(model.name)
                     );
                   },
                 );

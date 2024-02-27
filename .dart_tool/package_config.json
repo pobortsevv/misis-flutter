@@ -80,6 +80,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "go_router",
+      "rootUri": "file:///Users/sabra/.pub-cache/hosted/pub.dev/go_router-13.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/sabra/.pub-cache/hosted/pub.dev/http-1.2.1",
       "packageUri": "lib/",
@@ -114,6 +120,12 @@
       "rootUri": "file:///Users/sabra/.pub-cache/hosted/pub.dev/lints-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "logging",
+      "rootUri": "file:///Users/sabra/.pub-cache/hosted/pub.dev/logging-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "matcher",
@@ -296,7 +308,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-02-25T10:19:35.812895Z",
+  "generated": "2024-02-26T19:23:46.214744Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }

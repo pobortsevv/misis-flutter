@@ -1,39 +1,36 @@
 import 'package:go_router/go_router.dart';
 import 'package:misis/models/user.dart';
+import 'package:misis/screens/button_screen.dart';
 
 final class LoginRouter {
   static final List<RouteBase> loginRoutes = [
-     GoRoute(
-      path: 'filial',
+    GoRoute(
+      name: 'filial',
+      path: '/login/filial',
       builder: (context, state) {
-        // Здесь надо будет бильдить ViewModel для филиалов. Она будет отвечать за бизнес логику.
-        return ListingSelection();
+        return const ButtonScreen(title: "select filial", nextScreen: "status");
       },
     ),
     GoRoute(
-      path: 'status/:filial',
+      name: 'status',
+      path: '/login/status',
       builder: (context, state) {
-        final selectedFilial = state.pathParameters['filial'];
-        return StatusScreen(selectedFilial);
+        return const ButtonScreen(title: "select status", nextScreen: "group");
       },
     ),
-      GoRoute(
-      path: 'group/:filial',
+    GoRoute(
+      name: 'group',
+      path: '/login/group',
       builder: (context, state) {
-        var selectedParams = state.pathParameters;
-        selectedParams['status'] = Status.student.toString();
-        // Здесь надо будет бильдить ViewModel для групп. Она будет отвечать за бизнес логику.
-        return ListingSelection(selectedParams);
+        return const ButtonScreen(title: "select group", nextScreen: "schedule");
       },
     ),
-      GoRoute(
-      path: 'name/:filial',
+    GoRoute(
+      name: 'teacher',
+      path: '/login/teacher',
       builder: (context, state) {
-        var selectedParams = state.pathParameters;
-        selectedParams['status'] = Status.teacher.toString();
-        // Здесь надо будет бильдить ViewModel для преподов. Она будет отвечать за бизнес логику.
-        return ListingSelection(selectedParams);
+        return const ButtonScreen(title: "teacher login", nextScreen: "schedule");
       },
-    )
+    ),
   ];
 }

@@ -14,7 +14,7 @@ class ButtonScreen extends StatelessWidget {
       ),
       body: Center(
         child: TextButton(
-          onPressed: () => context.goNamed(nextScreen),
+          onPressed: () => context.pushNamed(nextScreen),
           child: const Text("click"),
         ),
       )

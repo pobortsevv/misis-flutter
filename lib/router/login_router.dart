@@ -4,6 +4,7 @@ import 'package:misis/screens/button_screen.dart';
 
 final class LoginRouter {
   static final List<RouteBase> loginRoutes = [
+    GoRoute(path: '/login', redirect: (context, state) { return '/login/filial'; }),
     GoRoute(
       name: 'filial',
       path: '/login/filial',
@@ -22,14 +23,16 @@ final class LoginRouter {
       name: 'group',
       path: '/login/group',
       builder: (context, state) {
-        return const ButtonScreen(title: "select group", nextScreen: "schedule");
+        return const ButtonScreen(
+            title: "select group", nextScreen: "schedule");
       },
     ),
     GoRoute(
       name: 'teacher',
       path: '/login/teacher',
       builder: (context, state) {
-        return const ButtonScreen(title: "teacher login", nextScreen: "schedule");
+        return const ButtonScreen(
+            title: "teacher login", nextScreen: "schedule");
       },
     ),
   ];

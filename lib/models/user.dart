@@ -16,16 +16,16 @@ final class User {
   factory User.fromJson(Map<String, dynamic> json) {
     return switch (json) {
       {
-        'status': Status status,
+        'status': String status,
         'value': String value
-      } => User(status, value),
+      } => User(Status.values.byName(status), value),
       _ => throw const FormatException('Failed to load user.')
     };
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'status': status,
+      'status': status.name,
       'value': value
     };
   }

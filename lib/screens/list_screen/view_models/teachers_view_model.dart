@@ -33,9 +33,7 @@ final class TeachersViewModel extends ListViewModel<Teacher> {
 
     await profileManager.addProfile(selectedProfile);
 
-    if (context.mounted) {
-      _clearAndNavigate(selectedProfile, context);
-    } 
+    if (context.mounted) context.goNamed(TeachersRoute.schedule.name);
   }
 
   Profile _makeProfile(Teacher selectedTeacher) {
@@ -43,13 +41,6 @@ final class TeachersViewModel extends ListViewModel<Teacher> {
     final selectedProfile = Profile(filial: selectedFilial, user: selectedUser);
 
     return selectedProfile;
-  }
-
-  void _clearAndNavigate(Profile profile, BuildContext context) {
-    while (context.canPop() == true) {
-      context.pop();
-    }
-    context.goNamed(TeachersRoute.schedule.name, extra: profile);
   }
 }
 

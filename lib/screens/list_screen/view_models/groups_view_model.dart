@@ -33,9 +33,7 @@ final class GroupsViewModel extends ListViewModel<Group> {
 
     await profileManager.addProfile(selectedProfile);
 
-    if (context.mounted) {
-      _clearAndNavigate(selectedProfile, context);
-    } 
+    if (context.mounted) context.goNamed(StudentsRoute.schedule.name);
   }
 
   Profile _makeProfile(Group selectedGroup) {
@@ -43,13 +41,6 @@ final class GroupsViewModel extends ListViewModel<Group> {
     final selectedProfile = Profile(filial: selectedFilial, user: selectedUser);
 
     return selectedProfile;
-  }
-
-  void _clearAndNavigate(Profile profile, BuildContext context) {
-    while (context.canPop() == true) {
-      context.pop();
-    }
-    context.goNamed(StudentsRoute.schedule.name, extra: profile);
   }
 }
 

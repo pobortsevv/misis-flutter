@@ -31,6 +31,8 @@ final class AppRouter {
                     name: 'schedule',
                     path: '/schedule',
                     builder: (BuildContext context, GoRouterState state) {
+                      _clearContextIfNeeded(context);
+
                       return const EmptyScreen(title: 'Расписание');
                     },
                     // routes: <RouteBase>[],
@@ -46,6 +48,8 @@ final class AppRouter {
                     name: 'settings',
                     path: '/settings',
                     builder: (BuildContext context, GoRouterState state) {
+                      _clearContextIfNeeded(context);
+                      
                       return const EmptyScreen(title: "Settings");
                     },
                     // routes: <RouteBase>[],
@@ -60,5 +64,11 @@ final class AppRouter {
         ],
       // errorBuilder: (context, state) {}, // TODO: Сделать для того, чтобы обрабатывать ошибки роутера
     );
+  }
+
+  void _clearContextIfNeeded(BuildContext context) {
+    while (context.canPop() == true) {
+      context.pop();
+    }
   }
 }

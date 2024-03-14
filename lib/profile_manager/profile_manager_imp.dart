@@ -35,4 +35,11 @@ final class ProfileManagerImp implements ProfileManager {
       return null;
     }
   }
+  
+  @override
+  Future<bool> isLoggedIn() async {
+    final profile = await getProfile();
+
+    return profile != null ? true : false;
+  }
 }

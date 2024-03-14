@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:misis/models/Domain/filial.dart';
 import 'package:misis/models/user.dart';
 
@@ -15,8 +17,9 @@ final class Profile {
       final userJson = json['user'];
       final user = User.fromJson(userJson); 
 
-    return Profile(filial: filial, user: user);
+      return Profile(filial: filial, user: user);
     } catch(e) {
+      log('Profile mapping error');
       return null;
     }
   }

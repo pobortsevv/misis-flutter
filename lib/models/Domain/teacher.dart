@@ -6,8 +6,10 @@
   "last_name": "Вакансия 1"
 */
 
+import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
+
 /// Доменная модель преподавателя
-final class Teacher {
+final class Teacher implements IdentifiableModel {
   final int id;
   final String firstName;
   final String? midName;
@@ -29,6 +31,17 @@ final class Teacher {
         'last_name': String lastName
       } => Teacher(id: id, firstName: firstName, midName: midName, lastName: lastName),
       _ => throw const FormatException('Failed to load teacher.')
+    };
+  }
+  
+  @override
+  String get name => "$lastName $firstName ${midName ?? ""}";
+  
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name
     };
   }
 }

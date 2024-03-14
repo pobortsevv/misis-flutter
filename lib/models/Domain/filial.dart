@@ -1,11 +1,15 @@
+import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
+
 /// Доменная модель филиала
-final class Filial {
+final class Filial extends IdentifiableModel {
+  @override
   final int id;
+  @override
   final String name;
   final String shortname;
   final String code;
 
-  const Filial({
+  Filial({
     required this.id,
     required this.name,
     required this.shortname,

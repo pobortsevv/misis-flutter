@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:misis/widgets/misis_progress_indicator/misis_progress_indicator.dart';
+import 'package:misis/models/profile.dart';
 
 class EmptyScreen extends StatelessWidget {
-  const EmptyScreen({super.key, required this.title});
   final String title;
+  // final Profile profile;
+
+  const EmptyScreen({required this.title, /*required this.profile, */super.key});
   
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,14 @@ class EmptyScreen extends StatelessWidget {
        appBar: AppBar(
           title: Text(title),
         ),
-        body: const Center(child: MisisProgressIndicator()),
+        body: Center(child:
+          Column(
+            children: [
+              // ListTile(title: Text(profile.filial.toString())),
+              // ListTile(title: Text(profile.user.toString()))
+            ],
+          )
+        ),
     );
   }
 }

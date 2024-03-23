@@ -1,8 +1,11 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:misis/mvvm/observer.dart';
 import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
 import 'package:misis/widgets/misis_progress_indicator/misis_progress_indicator.dart';
 
-class ListScreen extends StatefulWidget {
+final class ListScreen extends StatefulWidget {
   final ListViewModel vm;
 
   const ListScreen({required this.vm, super.key});
@@ -11,10 +14,28 @@ class ListScreen extends StatefulWidget {
   State<ListScreen> createState() => _ListScreenState();
 }
 
-class _ListScreenState extends State<ListScreen> {
+final class _ListScreenState extends State<ListScreen> implements EventObserver {
+  TextEditingController textEditingController = TextEditingController();
+
+  ListLoadingState _state = ListLoadingState.isLoading;
+  List<IdentifiableModel> _models = [];
+  String _error = "";
+
   @override
   void initState() {
+    widget.vm.subscribe(this);
+    widget.vm.loadData();
+
     super.initState();
+    // textEditingController.addListener(() { widget.vm.searchListener(textEditingController.text); });
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    widget.vm.unsubscribe(this);
+
+    super.dispose();
   }
 
   @override
@@ -23,37 +44,68 @@ class _ListScreenState extends State<ListScreen> {
         appBar: AppBar(
           title: Text(widget.vm.title)
         ),
-        body: Center(
-          child: FutureBuilder<List<IdentifiableModel>>(
-            future: widget.vm.getModelsList(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
-                  itemCount: snapshot.data?.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final model = snapshot.data![index];
+        body: Center(child: 
+          switch (_state) {
+            ListLoadingState.isLoading =>
+              const MisisProgressIndicator(),
 
-                    return GestureDetector(
-                      child: Container(
-                          margin: const EdgeInsets.symmetric(
-                            vertical: 2.0,
-                            horizontal: 8.0,
-                          ),
-                          child: ListTile(title: Text(model.name)),
-                      ),
-                      onTap: () => widget.vm.onTap(model.id, context)
-                    );
-                  },
-                );
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
+            ListLoadingState.dataLoaded =>
+              ListView.builder(
+                itemCount: _models.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final model = _models[index];
 
-              // By default, show a loading spinner.
-              return const MisisProgressIndicator();
-            },
-          ),
-        ),
+                  return ListItemWidget(
+                    title: model.name,
+                    onTap: () => widget.vm.onTap(model.id, context)
+                  );
+                },
+              ),
+
+            ListLoadingState.loadingError =>
+              Text(_error),
+          }
+        )
       );
+  }
+  
+  @override
+  void notify(ViewEvent event) {
+    if (event is LoadingEvent) {
+      setState(() {
+        _state = ListLoadingState.isLoading;
+      });
+    } else if (event is ListDataLoadedEvent) {
+      setState(() {
+        _state = ListLoadingState.dataLoaded;
+        _models = event.data;
+      });
+    } else if (event is LoadingErrorEvent) {
+      setState(() {
+        _state = ListLoadingState.loadingError;
+        _error = event.error;
+      });
+    }
+  }
+}
+
+class ListItemWidget extends StatelessWidget {
+  final Function onTap;
+  final String title;
+
+  const ListItemWidget({required this.title, required this.onTap, super.key});
+  
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () async { onTap(); },
+      child: Container(
+          margin: const EdgeInsets.symmetric(
+            vertical: 2.0,
+            horizontal: 8.0,
+          ),
+          child: ListTile(title: Text(title)),
+      )
+    );
   }
 }

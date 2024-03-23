@@ -7,27 +7,32 @@ import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
 final class FilialsViewModel extends ListViewModel<Filial> {
   @override
   final String title = 'Выберите филиал';
-  final AppProvider provider;
-  late final Future<List<Filial>> filials;
+  late List<Filial> _allFilials;
 
-  FilialsViewModel({required this.provider});
+  final AppProvider _provider;
+
+  FilialsViewModel({
+    required AppProvider provider
+  }) : _provider = provider;
 
   @override
-  Future<List<Filial>> getModelsList() {
-    filials = provider.fetchFilials();
-
-    return filials;
+  void loadData() {
+    notify(LoadingEvent(isLoading: true));
+    _provider.fetchFilials().then((value) {
+      _allFilials = value;
+      notify(ListDataLoadedEvent(data: value));
+    }).catchError((onError) {
+      notify(LoadingErrorEvent(error: onError));
+    });
   }
 
   @override
-  void onTap(int id, BuildContext context) async {
-    final filials = await this.filials;
+  void onTap(int id, BuildContext context) {
+    final filials = _allFilials;
     final selectedFilial = filials.firstWhere((element) => element.id == id);
 
     if (context.mounted) context.pushNamed(FilialsRoute.status.name, extra: selectedFilial);
   }
 }
 
-enum FilialsRoute {
-  status
-}
+enum FilialsRoute { status }

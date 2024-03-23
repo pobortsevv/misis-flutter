@@ -66,6 +66,10 @@ flutter_native_splash
 2.19
 file:///Users/sabra/.pub-cache/hosted/pub.dev/flutter_native_splash-2.3.13/
 file:///Users/sabra/.pub-cache/hosted/pub.dev/flutter_native_splash-2.3.13/lib/
+flutter_redux
+2.12
+file:///Users/sabra/.pub-cache/hosted/pub.dev/flutter_redux-0.10.0/
+file:///Users/sabra/.pub-cache/hosted/pub.dev/flutter_redux-0.10.0/lib/
 go_router
 3.1
 file:///Users/sabra/.pub-cache/hosted/pub.dev/go_router-13.2.0/
@@ -154,6 +158,10 @@ pointycastle
 3.0
 file:///Users/sabra/.pub-cache/hosted/pub.dev/pointycastle-3.7.4/
 file:///Users/sabra/.pub-cache/hosted/pub.dev/pointycastle-3.7.4/lib/
+redux
+2.12
+file:///Users/sabra/.pub-cache/hosted/pub.dev/redux-5.0.0/
+file:///Users/sabra/.pub-cache/hosted/pub.dev/redux-5.0.0/lib/
 shared_preferences
 2.19
 file:///Users/sabra/.pub-cache/hosted/pub.dev/shared_preferences-2.2.2/

@@ -7,7 +7,7 @@ import 'package:misis/screens/list_screen/view_models/filials_view_model.dart';
 import 'package:misis/screens/list_screen/view_models/groups_view_model.dart';
 import 'package:misis/screens/list_screen/view_models/teachers_view_model.dart';
 import 'package:misis/screens/status_screen/status_screen.dart';
-import 'package:misis/screens/status_screen/status_view_models.dart';
+import 'package:misis/screens/status_screen/status_view_model.dart';
 
 final class LoginRouter {
   final AppProvider _provider;

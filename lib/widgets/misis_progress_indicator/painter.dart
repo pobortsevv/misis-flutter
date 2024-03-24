@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:misis/figma/styles.dart';
 
 class Painter extends CustomPainter {
   final double firstAngle;
@@ -18,7 +19,7 @@ class Painter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint myArc = Paint()
-      ..color = Colors.blue
+      ..color = FigmaColors.primary
       ..style = PaintingStyle.stroke
       ..strokeWidth = 5
       ..strokeCap = StrokeCap.round;

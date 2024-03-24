@@ -7,9 +7,9 @@ import 'package:misis/screens/named_screen.dart';
 import 'package:misis/screens/root/nav_bar.dart';
 
 final class AppRouter {
-  AppProvider _provider;
-  ProfileManager _profileManager;
-  LoginRouter _loginRouter;
+  final AppProvider _provider;
+  final ProfileManager _profileManager;
+  final LoginRouter _loginRouter;
 
   AppRouter({
     required AppProvider provider,

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:misis/figma/styles.dart';
 import 'package:misis/profile_manager/profile_manager.dart';
 import 'package:misis/profile_manager/profile_manager_imp.dart';
 import 'package:misis/provider/provider.dart';
@@ -35,7 +35,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
 
-    return MaterialApp.router(
+    return CupertinoApp.router(
+      theme: ThemeClass.lightThemeData,
       routerConfig: router.getRouter(),
     );
   }

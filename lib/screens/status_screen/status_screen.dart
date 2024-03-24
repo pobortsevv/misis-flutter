@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:misis/screens/status_screen/status_view_models.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:misis/screens/status_screen/status_view_model.dart';
 
 class StatusScreen extends StatelessWidget {
   final StatusViewModel vm;
@@ -8,17 +8,17 @@ class StatusScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(vm.title),
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        border: Border(bottom: BorderSide(color: CupertinoTheme.of(context).barBackgroundColor))
       ),
-      body: Column(
+      child: Column(
         children: [
-          TextButton(
+          CupertinoButton(
             onPressed: () => vm.onStudentTap(context),
             child: const Text("Студент"),
           ),
-          TextButton(
+          CupertinoButton(
             onPressed: () => vm.onTeacherTap(context),
             child: const Text("Преподаватель"),
           )

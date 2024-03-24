@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:misis/figma/styles.dart';
 import 'package:misis/mvvm/observer.dart';
 import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
 import 'package:misis/widgets/misis_progress_indicator/misis_progress_indicator.dart';
@@ -42,14 +40,14 @@ final class _ListScreenState extends State<ListScreen> implements EventObserver 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
-          middle: Text(widget.vm.title)
-        ),
-        child: Center(child: 
+      navigationBar: CupertinoNavigationBar(
+        border: Border(bottom: BorderSide(color: CupertinoTheme.of(context).barBackgroundColor))
+      ),
+      child:
+        SafeArea(child:
           switch (_state) {
             ListLoadingState.isLoading =>
-              const MisisProgressIndicator(),
-
+              const Center(child: MisisProgressIndicator()),
             ListLoadingState.dataLoaded =>
               SearchableListingWidget(
                 title: widget.vm.title,
@@ -57,12 +55,11 @@ final class _ListScreenState extends State<ListScreen> implements EventObserver 
                 models:  _models,
                 onTap: (int id, BuildContext context) => widget.vm.onTap(id, context),
               ),
-            
             ListLoadingState.loadingError =>
               Text(_error),
           }
         )
-      );
+    );
   }
   
   @override
@@ -89,9 +86,6 @@ final class _ListScreenState extends State<ListScreen> implements EventObserver 
   }
 }
 
-// TODO: реализовать виджет dataLoaded виджет.
-// Он будет принимать только массив моделей и onTap кложуру.
-
 class SearchableListingWidget extends StatelessWidget {
   final String title;
   final TextEditingController controller;
@@ -110,12 +104,30 @@ class SearchableListingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CupertinoSearchTextField(
-          controller: controller,
-          placeholder: 'Поиск',
+        Container(
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          child: Text(
+            title,
+            textAlign: TextAlign.left,
+            style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          child: CupertinoTextField(
+            controller: controller,
+            placeholder: 'Поиск',
+            decoration: BoxDecoration(
+              border: Border.all(color: FigmaColors.primary, width: 2),
+              borderRadius: const BorderRadius.all(Radius.circular(8))
+            )
+          ),
         ),
         Expanded(
-          child: ListView.builder(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: ListView.builder(
               itemCount: models.length,
               itemBuilder: (BuildContext context, int index) {
                 final model = models[index];
@@ -125,6 +137,7 @@ class SearchableListingWidget extends StatelessWidget {
                 );
               },
             )
+          )
         )
       ],
     );
@@ -141,13 +154,7 @@ class ListItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async { onTap(); },
-      child: Container(
-          margin: const EdgeInsets.symmetric(
-            vertical: 2.0,
-            horizontal: 8.0,
-          ),
-          child: CupertinoListTile(title: Text(title)),
-      )
+      child: CupertinoListTile(title: Text(title))
     );
   }
 }

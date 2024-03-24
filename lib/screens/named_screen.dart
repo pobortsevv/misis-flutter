@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:misis/models/profile.dart';
 
@@ -9,11 +10,12 @@ class EmptyScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-       appBar: AppBar(
-          title: Text(title),
+    return CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: Text(title),
+          border: Border(bottom: BorderSide(color: CupertinoTheme.of(context).barBackgroundColor))
         ),
-        body: Center(child:
+        child: Center(child:
           Column(
             children: [
               // ListTile(title: Text(profile.filial.toString())),

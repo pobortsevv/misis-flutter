@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:misis/widgets/misis_progress_indicator/painter.dart';
 
@@ -122,9 +123,8 @@ class _MisisProgressIndicator extends State<MisisProgressIndicator> with TickerP
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 248, 248, 248),
-      body: Center(
+    return CupertinoPageScaffold(
+      child: Center(
         child: SizedBox(
           height: 100,
           width: 100,

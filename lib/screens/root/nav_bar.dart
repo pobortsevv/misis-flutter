@@ -1,22 +1,24 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:misis/figma/icons.dart';
 
 class ScaffoldNavBar extends StatelessWidget {
   const ScaffoldNavBar({
     required this.navigationShell,
     Key? key,
-  }) : super(key: key ?? const ValueKey<String>('ScaffoldNavBar'));
+  }) : super(key: key);
 
   final StatefulNavigationShell navigationShell;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: navigationShell,
-      bottomNavigationBar: BottomNavigationBar(
+    return CupertinoTabScaffold(
+      key:  UniqueKey(),
+      tabBuilder: (context, index) => navigationShell,
+      tabBar: CupertinoTabBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Расписание'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Настройки'),
+          BottomNavigationBarItem(icon: Icon(FigmaIcons.calendar), label: 'Расписание'),
+          BottomNavigationBarItem(icon: Icon(FigmaIcons.settings), label: 'Настройки'),
         ],
         currentIndex: navigationShell.currentIndex,
         onTap: (int index) => _onTap(context, index),

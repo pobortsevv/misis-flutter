@@ -10,14 +10,21 @@ import 'package:misis/screens/status_screen/status_screen.dart';
 import 'package:misis/screens/status_screen/status_view_models.dart';
 
 final class LoginRouter {
-  static List<RouteBase> makeRoutes(AppProvider provider, ProfileManager profileManager) {
+  final AppProvider _provider;
+  final ProfileManager _profileManager;
+  late final FilialsViewModel _filialsRootViewModel;
+
+  LoginRouter({
+    required AppProvider provider,
+    required ProfileManager profileManager
+  }) : _provider = provider, _profileManager = profileManager, _filialsRootViewModel = FilialsViewModel(provider: provider);
+
+  List<RouteBase> getRoutes() {
     return [
       GoRoute(
         path: '/login',
         builder: (context, state) {
-          final vm = FilialsViewModel(provider: provider);
-
-          return ListScreen(vm: vm);
+          return ListScreen(vm: _filialsRootViewModel);
         },
         routes: [
           GoRoute(
@@ -37,8 +44,8 @@ final class LoginRouter {
               final filial = state.extra as Filial;
               final vm = GroupsViewModel(
                 selectedFilial: filial,
-                  provider: provider,
-                  profileManager: profileManager
+                  provider: _provider,
+                  profileManager: _profileManager
                 );
 
               return ListScreen(vm: vm);
@@ -51,8 +58,8 @@ final class LoginRouter {
               final filial = state.extra as Filial;
               final vm = TeachersViewModel(
                 selectedFilial: filial,
-                provider: provider,
-                profileManager: profileManager
+                provider: _provider,
+                profileManager: _profileManager
               );
 
               return ListScreen(vm: vm);

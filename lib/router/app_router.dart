@@ -7,18 +7,21 @@ import 'package:misis/screens/named_screen.dart';
 import 'package:misis/screens/root/nav_bar.dart';
 
 final class AppRouter {
-  AppProvider provider;
-  ProfileManager profileManager;
-  late GoRouter rootRouter;
+  AppProvider _provider;
+  ProfileManager _profileManager;
+  LoginRouter _loginRouter;
 
-  AppRouter(this.profileManager, this.provider) {
-    rootRouter = _makeRouter(profileManager);
-  }
+  AppRouter({
+    required AppProvider provider,
+    required ProfileManager profileManager
+  }) : _provider = provider,
+   _profileManager = profileManager,
+   _loginRouter = LoginRouter(provider: provider, profileManager: profileManager);
 
-  GoRouter _makeRouter(ProfileManager profileManager) {
+  GoRouter getRouter() {
     return GoRouter(
       initialLocation: '/schedule',
-      routes: LoginRouter.makeRoutes(provider, profileManager) +
+      routes: _loginRouter.getRoutes() +
         [
           StatefulShellRoute.indexedStack(
             builder: (BuildContext context, GoRouterState state, StatefulNavigationShell navigationShell) {
@@ -37,7 +40,7 @@ final class AppRouter {
                     },
                     // routes: <RouteBase>[],
                     redirect: (context, state) async {
-                      return await profileManager.isLoggedIn() ? '/schedule' : '/login';
+                      return await _profileManager.isLoggedIn() ? '/schedule' : '/login';
                     },
                   ),
                 ],
@@ -54,7 +57,7 @@ final class AppRouter {
                     },
                     // routes: <RouteBase>[],
                     redirect: (context, state) async {
-                      return await profileManager.isLoggedIn() ? '/settings' : '/login';
+                      return await _profileManager.isLoggedIn() ? '/settings' : '/login';
                     }
                   ),
                 ],

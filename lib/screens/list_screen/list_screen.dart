@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:misis/mvvm/observer.dart';
 import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
@@ -40,28 +41,23 @@ final class _ListScreenState extends State<ListScreen> implements EventObserver 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.vm.title)
+    return CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+          middle: Text(widget.vm.title)
         ),
-        body: Center(child: 
+        child: Center(child: 
           switch (_state) {
             ListLoadingState.isLoading =>
               const MisisProgressIndicator(),
 
             ListLoadingState.dataLoaded =>
-              ListView.builder(
-                itemCount: _models.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final model = _models[index];
-
-                  return ListItemWidget(
-                    title: model.name,
-                    onTap: () => widget.vm.onTap(model.id, context)
-                  );
-                },
+              SearchableListingWidget(
+                title: widget.vm.title,
+                controller: textEditingController,
+                models:  _models,
+                onTap: (int id, BuildContext context) => widget.vm.onTap(id, context),
               ),
-
+            
             ListLoadingState.loadingError =>
               Text(_error),
           }
@@ -96,27 +92,43 @@ final class _ListScreenState extends State<ListScreen> implements EventObserver 
 // TODO: реализовать виджет dataLoaded виджет.
 // Он будет принимать только массив моделей и onTap кложуру.
 
-class ListingWidget extends StatelessWidget {
+class SearchableListingWidget extends StatelessWidget {
+  final String title;
   final TextEditingController controller;
   final List<IdentifiableModel> models;
+  final Function onTap;
 
-  const ListingWidget({
+  const SearchableListingWidget({
+    required this.title,
     required this.controller,
     required this.models,
+    required this.onTap,
     super.key
   });
-
+  
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SearchBar(
+        CupertinoSearchTextField(
           controller: controller,
-          hintText: '',
+          placeholder: 'Поиск',
+        ),
+        Expanded(
+          child: ListView.builder(
+              itemCount: models.length,
+              itemBuilder: (BuildContext context, int index) {
+                final model = models[index];
+                return ListItemWidget(
+                  title: model.name,
+                  onTap: () async { onTap(model.id, context); }
+                );
+              },
+            )
         )
       ],
     );
-  }
+  }  
 }
 
 class ListItemWidget extends StatelessWidget {
@@ -134,7 +146,7 @@ class ListItemWidget extends StatelessWidget {
             vertical: 2.0,
             horizontal: 8.0,
           ),
-          child: ListTile(title: Text(title)),
+          child: CupertinoListTile(title: Text(title)),
       )
     );
   }

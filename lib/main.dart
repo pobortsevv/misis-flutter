@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   final AppProvider provider;
 
   MyApp({required this.profileManager, required this.provider, super.key,}) {
-    router = AppRouter(profileManager, provider);
+    router = AppRouter(provider: provider, profileManager: profileManager);
   }
 
   @override
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
     FlutterNativeSplash.remove();
 
     return MaterialApp.router(
-      routerConfig: router.rootRouter,
+      routerConfig: router.getRouter(),
     );
   }
 }

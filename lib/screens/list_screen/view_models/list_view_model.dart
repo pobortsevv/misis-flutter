@@ -25,7 +25,7 @@ abstract class ListViewModel<Model extends IdentifiableModel> extends EventViewM
 
   void loadData();
   void onTap(int id, BuildContext context);
-  // void searchListener(String text);
+  void searchListener(String text);
 }
 
 class LoadingEvent extends ViewEvent {
@@ -44,4 +44,10 @@ class LoadingErrorEvent extends ViewEvent {
   String error;
 
   LoadingErrorEvent({required this.error}) : super("LoadingErrorEvent");
+}
+
+class SearchEvent<Model extends IdentifiableModel> extends ViewEvent {
+  final List<Model> foundData;
+
+  SearchEvent({required this.foundData}) : super("SearchEvent");
 }

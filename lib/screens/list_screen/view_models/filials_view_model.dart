@@ -11,9 +11,7 @@ final class FilialsViewModel extends ListViewModel<Filial> {
 
   final AppProvider _provider;
 
-  FilialsViewModel({
-    required AppProvider provider
-  }) : _provider = provider;
+  FilialsViewModel({required AppProvider provider}) : _provider = provider;
 
   @override
   void loadData() {
@@ -31,7 +29,15 @@ final class FilialsViewModel extends ListViewModel<Filial> {
     final filials = _allFilials;
     final selectedFilial = filials.firstWhere((element) => element.id == id);
 
-    if (context.mounted) context.pushNamed(FilialsRoute.status.name, extra: selectedFilial);
+    context.pushNamed(FilialsRoute.status.name, extra: selectedFilial);
+  }
+
+  @override
+  void searchListener(String text) {
+    final foundFilials = _allFilials
+        .where((item) => item.name.toLowerCase().contains(text.toLowerCase()))
+        .toList();
+    notify(SearchEvent(foundData: foundFilials));
   }
 }
 

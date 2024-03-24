@@ -54,7 +54,10 @@ final class TeachersViewModel extends ListViewModel<Teacher> {
   
   @override
   void searchListener(String text) {
-    // TODO: implement searchListener
+    final foundTeachers = _allTeachers
+        .where((item) => item.name.toLowerCase().contains(text.toLowerCase()))
+        .toList();
+    notify(SearchEvent(foundData: foundTeachers));
   }
 }
 

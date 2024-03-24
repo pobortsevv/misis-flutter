@@ -27,7 +27,7 @@ final class _ListScreenState extends State<ListScreen> implements EventObserver 
     widget.vm.loadData();
 
     super.initState();
-    // textEditingController.addListener(() { widget.vm.searchListener(textEditingController.text); });
+    textEditingController.addListener(() { widget.vm.searchListener(textEditingController.text); });
   }
 
   @override
@@ -85,7 +85,37 @@ final class _ListScreenState extends State<ListScreen> implements EventObserver 
         _state = ListLoadingState.loadingError;
         _error = event.error;
       });
+    } else if (event is SearchEvent) {
+      setState(() {
+        _models = event.foundData;
+      });
     }
+  }
+}
+
+// TODO: реализовать виджет dataLoaded виджет.
+// Он будет принимать только массив моделей и onTap кложуру.
+
+class ListingWidget extends StatelessWidget {
+  final TextEditingController controller;
+  final List<IdentifiableModel> models;
+
+  const ListingWidget({
+    required this.controller,
+    required this.models,
+    super.key
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SearchBar(
+          controller: controller,
+          hintText: '',
+        )
+      ],
+    );
   }
 }
 

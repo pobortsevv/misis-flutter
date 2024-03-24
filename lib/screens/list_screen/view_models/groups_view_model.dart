@@ -52,10 +52,13 @@ final class GroupsViewModel extends ListViewModel<Group> {
     return selectedProfile;
   }
   
-  // @override
-  // void searchListener(String text) {
-  //   // TODO: implement searchListener
-  // }
+  @override
+  void searchListener(String text) {
+    final foundGroups = _allGroups
+        .where((item) => item.name.toLowerCase().contains(text.toLowerCase()))
+        .toList();
+    notify(SearchEvent(foundData: foundGroups));
+  }
 }
 
 enum StudentsRoute {

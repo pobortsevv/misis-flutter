@@ -110,12 +110,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "flutter_redux",
-      "rootUri": "file:///Users/sabra/.pub-cache/hosted/pub.dev/flutter_redux-0.10.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "flutter_test",
       "rootUri": "file:///Users/sabra/development/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -258,12 +252,6 @@
       "rootUri": "file:///Users/sabra/.pub-cache/hosted/pub.dev/pointycastle-3.7.4",
       "packageUri": "lib/",
       "languageVersion": "3.0"
-    },
-    {
-      "name": "redux",
-      "rootUri": "file:///Users/sabra/.pub-cache/hosted/pub.dev/redux-5.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences",
@@ -410,7 +398,7 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-03-23T13:48:36.624519Z",
+  "generated": "2024-03-24T10:45:41.180148Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }

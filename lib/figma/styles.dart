@@ -37,6 +37,7 @@ class FigmaColors {
   const FigmaColors();
 
   static const Color primary = Color(0xff0541f1);
+  static const Color secondary = Color(0xffff7d63);
   static const Color background1levelLight = Color(0xffffffff);
   static const Color background2levelLight = Color(0xffffffff);
   static const Color backgroundAccentLight = Color(0xfff5f5f5);

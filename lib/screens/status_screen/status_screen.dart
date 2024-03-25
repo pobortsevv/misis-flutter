@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:misis/figma/styles.dart';
 import 'package:misis/screens/status_screen/status_view_model.dart';
 
+import 'widgets/status_button.dart';
+
 class StatusScreen extends StatelessWidget {
   final StatusViewModel vm;
 
@@ -27,51 +29,17 @@ class StatusScreen extends StatelessWidget {
           ),
           StatusButton(
             title: 'Студент',
-            color: FigmaColors.primary,
+            color: FigmaColors.primary.withOpacity(0.3),
+            image: const AssetImage('assets/images/hat.png'),
             onTap: () => vm.onStudentTap(context)
-          ),
-          const SizedBox(
-            height: 16,
           ),
           StatusButton(
             title: 'Преподаватель',
-            color: FigmaColors.secondary,
+            color: FigmaColors.secondary.withOpacity(0.3),
+            image: const AssetImage('assets/images/suitcase.png'),
             onTap: () => vm.onTeacherTap(context)
           )
         ],
-      )
-    );
-  }
-}
-
-class StatusButton extends StatelessWidget {
-  final String title;
-  final Color color;
-  final Function onTap;
-
-  const StatusButton({
-    required this.title,
-    required this.color,
-    required this.onTap,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () async { onTap(); },
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 29.5, vertical: 16),
-        decoration: BoxDecoration(
-          border: Border.all(color: color, width: 2),
-          borderRadius: const BorderRadius.all(Radius.circular(12))
-        ),
-        child: Column(
-          children: [
-            // Image(image: ),
-            Text(title, style: CupertinoTheme.of(context).textTheme.navTitleTextStyle, textAlign: TextAlign.center)
-          ]
-        )
       )
     );
   }

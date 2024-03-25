@@ -7,15 +7,13 @@ import 'package:misis/screens/named_screen.dart';
 import 'package:misis/screens/root/nav_bar.dart';
 
 final class AppRouter {
-  final AppProvider _provider;
   final ProfileManager _profileManager;
   final LoginRouter _loginRouter;
 
   AppRouter({
     required AppProvider provider,
     required ProfileManager profileManager
-  }) : _provider = provider,
-   _profileManager = profileManager,
+  }) : _profileManager = profileManager,
    _loginRouter = LoginRouter(provider: provider, profileManager: profileManager);
 
   GoRouter getRouter() {

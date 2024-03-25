@@ -4,6 +4,7 @@ class ThemeClass {
   static CupertinoTextThemeData lightThemeTextData = CupertinoTextThemeData(
     primaryColor: FigmaColors.primary,
     textStyle: const FigmaTextStyles().body,
+    navTitleTextStyle: const FigmaTextStyles().title,
     navLargeTitleTextStyle: const FigmaTextStyles().headline,
     tabLabelTextStyle: const FigmaTextStyles().footnote
   );
@@ -11,6 +12,7 @@ class ThemeClass {
   static CupertinoTextThemeData darkThemeTextData = CupertinoTextThemeData(
     primaryColor: FigmaColors.primary,
     textStyle: const FigmaTextStyles().darkBody,
+    navTitleTextStyle: const FigmaTextStyles().darkTitle,
     navLargeTitleTextStyle: const FigmaTextStyles().darkHeadline,
     tabLabelTextStyle: const FigmaTextStyles().dartFootnote
   );

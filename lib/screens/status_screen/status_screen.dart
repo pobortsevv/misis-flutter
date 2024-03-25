@@ -69,7 +69,7 @@ class StatusButton extends StatelessWidget {
         child: Column(
           children: [
             // Image(image: ),
-            Text(title, style: const FigmaTextStyles().title, textAlign: TextAlign.center)
+            Text(title, style: CupertinoTheme.of(context).textTheme.navTitleTextStyle, textAlign: TextAlign.center)
           ]
         )
       )

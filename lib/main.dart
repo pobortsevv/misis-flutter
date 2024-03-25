@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
     FlutterNativeSplash.remove();
 
     return CupertinoApp.router(
-      theme: ThemeClass.lightThemeData,
+      theme: ThemeClass.darkThemeData,
       routerConfig: router.getRouter(),
     );
   }

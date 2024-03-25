@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:misis/mvvm/observer.dart';
-import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
+import 'package:misis/screens/login/list_screen/view_models/list_view_model.dart';
 import 'package:misis/widgets/misis_progress_indicator/misis_progress_indicator.dart';
 import 'widgets/searchable_listing_widget.dart';
 

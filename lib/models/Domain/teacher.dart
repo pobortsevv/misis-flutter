@@ -6,7 +6,7 @@
   "last_name": "Вакансия 1"
 */
 
-import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
+import 'package:misis/screens/login/list_screen/view_models/list_view_model.dart';
 
 /// Доменная модель преподавателя
 final class Teacher implements IdentifiableModel {

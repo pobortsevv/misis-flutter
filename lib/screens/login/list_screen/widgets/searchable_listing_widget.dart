@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:misis/figma/styles.dart';
-import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
+import 'package:misis/screens/login/list_screen/view_models/list_view_model.dart';
 
 import 'list_item_widget.dart';
     

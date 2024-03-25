@@ -2,12 +2,12 @@ import 'package:go_router/go_router.dart';
 import 'package:misis/models/Domain/filial.dart';
 import 'package:misis/profile_manager/profile_manager.dart';
 import 'package:misis/provider/provider.dart';
-import 'package:misis/screens/list_screen/list_screen.dart';
-import 'package:misis/screens/list_screen/view_models/filials_view_model.dart';
-import 'package:misis/screens/list_screen/view_models/groups_view_model.dart';
-import 'package:misis/screens/list_screen/view_models/teachers_view_model.dart';
-import 'package:misis/screens/status_screen/status_screen.dart';
-import 'package:misis/screens/status_screen/status_view_model.dart';
+import 'package:misis/screens/login/list_screen/list_screen.dart';
+import 'package:misis/screens/login/list_screen/view_models/filials_view_model.dart';
+import 'package:misis/screens/login/list_screen/view_models/groups_view_model.dart';
+import 'package:misis/screens/login/list_screen/view_models/teachers_view_model.dart';
+import 'package:misis/screens/login/status_screen/status_screen.dart';
+import 'package:misis/screens/login/status_screen/status_view_model.dart';
 
 final class LoginRouter {
   final AppProvider _provider;

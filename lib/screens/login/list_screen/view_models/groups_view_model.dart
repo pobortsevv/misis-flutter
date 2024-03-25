@@ -6,7 +6,7 @@ import 'package:misis/models/profile.dart';
 import 'package:misis/models/user.dart';
 import 'package:misis/profile_manager/profile_manager.dart';
 import 'package:misis/provider/provider.dart';
-import 'package:misis/screens/list_screen/view_models/list_view_model.dart';
+import 'package:misis/screens/login/list_screen/view_models/list_view_model.dart';
 
 final class GroupsViewModel extends ListViewModel<Group> {
   @override

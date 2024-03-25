@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:misis/figma/styles.dart';
-import 'package:misis/screens/status_screen/status_view_model.dart';
+import 'package:misis/screens/login/status_screen/status_view_model.dart';
 
 import 'widgets/status_button.dart';
 

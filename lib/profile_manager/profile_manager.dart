@@ -1,4 +1,4 @@
-import 'package:misis/models/profile.dart';
+import 'package:misis/models/domain/profile.dart';
 
 abstract class ProfileManager {
   Future<void> addProfile(Profile profile);

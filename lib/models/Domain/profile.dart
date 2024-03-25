@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:misis/models/Domain/filial.dart';
-import 'package:misis/models/user.dart';
+import 'package:misis/models/domain/filial.dart';
+import 'package:misis/models/domain/user.dart';
 
 final class Profile {
   final Filial filial;

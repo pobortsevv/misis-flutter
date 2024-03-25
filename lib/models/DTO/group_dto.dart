@@ -1,4 +1,4 @@
-import 'package:misis/models/Domain/group.dart';
+import 'package:misis/models/domain/group.dart';
 
 final class GetGroups {
   final Map<String, dynamic> getGroups;

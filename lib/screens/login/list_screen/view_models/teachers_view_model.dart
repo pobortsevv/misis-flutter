@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:misis/models/Domain/filial.dart';
-import 'package:misis/models/Domain/teacher.dart';
-import 'package:misis/models/profile.dart';
-import 'package:misis/models/user.dart';
+import 'package:misis/models/domain/filial.dart';
+import 'package:misis/models/domain/teacher.dart';
+import 'package:misis/models/domain/profile.dart';
+import 'package:misis/models/domain/user.dart';
 import 'package:misis/profile_manager/profile_manager.dart';
 import 'package:misis/provider/provider.dart';
 import 'package:misis/screens/login/list_screen/view_models/list_view_model.dart';

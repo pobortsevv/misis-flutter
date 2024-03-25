@@ -1,4 +1,4 @@
-import 'package:misis/models/Domain/filial.dart';
+import 'package:misis/models/domain/filial.dart';
 
 final class GetFilials {
   final Map<String, dynamic> getFilials;

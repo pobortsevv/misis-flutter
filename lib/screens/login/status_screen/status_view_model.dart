@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:misis/models/Domain/filial.dart';
-import 'package:misis/models/user.dart';
+import 'package:misis/models/domain/filial.dart';
+import 'package:misis/models/domain/user.dart';
 
 final class StatusViewModel {
   final String title = 'Кто вы?';

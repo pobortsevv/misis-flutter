@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:misis/models/Domain/filial.dart';
+import 'package:misis/models/domain/filial.dart';
 import 'package:misis/profile_manager/profile_manager.dart';
 import 'package:misis/provider/provider.dart';
 import 'package:misis/screens/login/list_screen/list_screen.dart';

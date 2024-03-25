@@ -1,6 +1,6 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:go_router/go_router.dart';
-import 'package:misis/models/Domain/filial.dart';
+import 'package:misis/models/domain/filial.dart';
 import 'package:misis/provider/provider.dart';
 import 'package:misis/screens/login/list_screen/view_models/list_view_model.dart';
 

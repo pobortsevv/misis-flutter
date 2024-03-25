@@ -1,4 +1,4 @@
-import 'package:misis/models/Domain/teacher.dart';
+import 'package:misis/models/domain/teacher.dart';
 
 final class GetTeachers {
   final Map<String, dynamic> getTeachers;

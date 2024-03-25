@@ -1,4 +1,4 @@
-import 'package:misis/models/Domain/room.dart';
+import 'package:misis/models/domain/room.dart';
 
 final class GetRooms {
   final Map<String, dynamic> getRooms;

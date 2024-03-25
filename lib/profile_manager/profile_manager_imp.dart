@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:misis/models/profile.dart';
+import 'package:misis/models/domain/profile.dart';
 import 'package:misis/profile_manager/profile_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
